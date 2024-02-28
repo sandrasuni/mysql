@@ -1,0 +1,92 @@
+use sandra;
+
+create table STUDENT(roll_no int primary keymysql> create table STUDENT(roll_no int primary key,name varchar(50)not null,age int check(age>=0 AND
+age<=99)not null,address varchar(100),gender varchar(5) default 'm');
+
+desc STUDENT;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| roll_no | int          | NO   | PRI | NULL    |       |
+| name    | varchar(50)  | NO   |     | NULL    |       |
+| age     | int          | NO   |     | NULL    |       |
+| address | varchar(100) | YES  |     | NULL    |       |
+| gender  | varchar(5)   | YES  |     | m       |       |
++---------+--------------+------+-----+---------+-------+
+
+create temporary table student1 select * from STUDENT;
+
+mysql> desc student1;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| roll_no | int          | NO   |     | NULL    | NULL  |
+| name    | varchar(50)  | NO   |     | NULL    | NULL  |
+| age     | int          | NO   |     | NULL    | NULL  |
+| address | varchar(100) | YES  |     | NULL    | NULL  |
+| gender  | varchar(5)   | YES  |     | m       | NULL  |
++---------+--------------+------+-----+---------+-------+
+
+create table EMP as select * from EMPLOYEE;
+
+mysql> desc EMP;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | YES  |     | NULL    |       |
+| name     | varchar(50) | YES  |     | NULL    |       |
+| city     | varchar(50) | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| adhar_no | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+
+create database INVOICE;
+
+create table customer(cust_id int primary key,name varchar(50),address varchar(100),city varchar(
+50),ph_no int);
+
+mysql> desc customer;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| cust_id | int          | NO   | PRI | NULL    |       |
+| name    | varchar(50)  | YES  |     | NULL    |       |
+| address | varchar(100) | YES  |     | NULL    |       |
+| city    | varchar(50)  | YES  |     | NULL    |       |
+| ph_no   | int          | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+
+
+create table product(pid int primary key,pname varchar(50),price int default '0');
+
+mysql> desc product;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| pid   | int         | NO   | PRI | NULL    |       |
+| pname | varchar(50) | YES  |     | NULL    |       |
+| price | int         | YES  |     | 0       |       |
++-------+-------------+------+-----+---------+-------+
+
+create table Invoice_master(inv_id int primary key,cust_id int,foreign key(cust_id) references customer(cust_id),inv_date date);
+
+mysql> desc Invoice_master;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| inv_id   | int  | NO   | PRI | NULL    |       |
+| cust_id  | int  | YES  | MUL | NULL    |       |
+| inv_date | date | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+
+create table Invoice_item(inv_id int,pid int,foreign key(inv_id) references Invoice_master(inv_id),foreign key(pid) references product(pid),quantity int);
+
+mysql> desc Invoice_item;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| inv_id   | int  | YES  | MUL | NULL    |       |
+| pid      | int  | YES  | MUL | NULL    |       |
+| quantity | int  | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+
