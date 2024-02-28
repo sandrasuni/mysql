@@ -90,3 +90,4 @@ mysql> desc Invoice_item;
 | quantity | int  | YES  |     | NULL    |       |
 +----------+------+------+-----+---------+-------+
 
+//VERIFIED
