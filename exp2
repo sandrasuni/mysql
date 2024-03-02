@@ -1,0 +1,302 @@
+DML COMMANDS
+
+a)DML -INSERT
+
+
+1.insert values in PERSON table.
+
+mysql> insert into PERSON values(1,'Anu','Thiruvambadi',2002-06-19,123456789);
+mysql> insert into PERSON values(2,'sevag','Vadakara',2002-04-24,1213445678);
+mysql> insert into PERSON values(3,'Banu','Wayanad',2002-11-26,1213445676);
+mysql> insert into PERSON values(4,'Akash','Payyoli',2002-03-03,213445676);
+mysql> insert into PERSON values(5,'Sandra','Kozhikode',2002-01-17,413445676);
+
+mysql> select * from PERSON;
+
++------+--------+--------------+------+------------+
+| SSN  | name   | city         | dob  | adhar_no   |
++------+--------+--------------+------+------------+
+|    1 | Anu    | Thiruvambadi | 1977 |  123456789 |
+|    2 | sevag  | Vadakara     | 1974 | 1213445678 |
+|    3 | Banu   | Wayanad      | 1965 | 1213445676 |
+|    4 | Akash  | Payyoli      | 1996 |  213445676 |
+|    5 | Sandra | Kozhikode    | 1984 |  413445676 |
++------+--------+--------------+------+------------+
+
+2.Insert values in STUDENT table.
+
+mysql> insert into STUDENT values(1,'Nushri',21,'abcd(h)wayand(po)','f');
+mysql> insert into STUDENT values(2,'Anugrah',20,'efgh(h)ulliyeri(po)','m');
+mysql> insert into STUDENT values(3,'Archana',22,'hijk(h)mukkom(po)','f');
+mysql> insert into STUDENT values(4,'Ammu',19,'lmno(h)cgm(po)','f');
+mysql> insert into STUDENT values(5,'Appu',25,'klvtkl(h)kgm(po)','m');
+
+mysql> select * from STUDENT;
++---------+---------+------+---------------------+--------+
+| roll_no | name    | age  | address             | gender |
++---------+---------+------+---------------------+--------+
+|       1 | Nushri  |   21 | abcd(h)wayand(po)   | f      |
+|       2 | Anugrah |   20 | efgh(h)ulliyeri(po) | m      |
+|       3 | Archana |   22 | hijk(h)mukkom(po)   | f      |
+|       4 | Ammu    |   19 | lmno(h)cgm(po)      | f      |
+|       5 | Appu    |   25 | klvtkl(h)kgm(po)    | m      |
++---------+---------+------+---------------------+--------+
+
+3.Insert values in INVOICE database.
+
+mysql> insert into customer values(10001,'Athulya','abcd(h)gcm(po)','kochi',1234567866);
+mysql> insert into customer(cust_id,name,address,city)values(10002,'Remya','aefd(h)cvm(po)','ekm');
+mysql> insert into customer values(10003,'Mini','ddfd(h)kgm(po)','tvm',6645678911);
+mysql> insert into customer values(10004,'Bhavana','kkm(h)vgm(po)','calicut',7736545782);
+mysql> insert into customer values(10005,'Navya','abc(h)bgm(po)','klm',7036545732);
+
+mysql> select * from customer;
+
++---------+---------+----------------+---------+------------+
+| cust_id | name    | address        | city    | ph_no      |
++---------+---------+----------------+---------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | kochi   | 1234567866 |
+|   10002 | Remya   | aefd(h)cvm(po) | ekm     |       NULL |
+|   10003 | Mini    | ddfd(h)kgm(po) | tvm     | 6645678911 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | calicut | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm     | 7036545732 |
++---------+---------+----------------+---------+------------+
+
+mysql> insert into product values(2001,'pen',12);
+mysql> insert into product values(2002,'pencil',15);
+mysql> insert into product values(2003,'soap',70);
+mysql> insert into product values(2004,'notebook',60);
+mysql> insert into product values(2005,'A4 sheet',50);
+
+mysql> select * from product;
+
++------+----------+-------+
+| pid  | pname    | price |
++------+----------+-------+
+| 2001 | pen      |    12 |
+| 2002 | pencil   |    15 |
+| 2003 | soap     |    70 |
+| 2004 | notebook |    60 |
+| 2005 | A4 sheet |    50 |
++------+----------+-------+
+
+mysql> insert into Invoice_master values(101,10001,'2021-01-01');
+mysql> insert into Invoice_master values(102,10002,'2022-02-10');
+mysql> insert into Invoice_master values(103,10003,'2021-06-19');
+mysql> insert into Invoice_master values(104,10004,'2023-11-26');
+mysql> insert into Invoice_master values(105,10005,'2023-03-15');
+
+mysql> select * from Invoice_master;
+
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|    101 |   10001 | 2021-01-01 |
+|    102 |   10002 | 2022-02-10 |
+|    103 |   10003 | 2021-06-19 |
+|    104 |   10004 | 2023-11-26 |
+|    105 |   10005 | 2023-03-15 |
++--------+---------+------------+
+
+mysql> insert into Invoice_item values(101,2001,1);
+mysql> insert into Invoice_item values(101,2002,2);
+mysql> insert into Invoice_item values(102,2003,2);
+mysql> insert into Invoice_item values(103,2004,5);
+mysql> insert into Invoice_item values(104,2005,4);
+mysql> insert into Invoice_item values(105,2005,4);
+
+mysql> select * from Invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|    101 | 2001 |        1 |
+|    101 | 2002 |        2 |
+|    102 | 2003 |        2 |
+|    103 | 2004 |        5 |
+|    104 | 2005 |        4 |
+|    105 | 2005 |        4 |
++--------+------+----------+
+
+ 
+ b) DML - UPDATE 
+
+
+1. Update the price of a particular product.
+
+mysql> update product set price=17 where pname='pencil';
+
+mysql> select * from product;
++------+----------+-------+
+| pid  | pname    | price |
++------+----------+-------+
+| 2001 | pen      |    12 |
+| 2002 | pencil   |    17 |
+| 2003 | soap     |    70 |
+| 2004 | notebook |    60 |
+| 2005 | A4 sheet |    50 |
++------+----------+-------+
+ 
+ 2. Change the name of city ‘calicut’ to ‘kozhikode’ in the customer table. 
+ 
+mysql> update customer set city='Kozhikode' where city='Calicut';
+
+mysql> select * from customer;
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | kochi     | 1234567866 |
+|   10002 | Remya   | aefd(h)cvm(po) | ekm       |       NULL |
+|   10003 | Mini    | ddfd(h)kgm(po) | tvm       | 6645678911 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
++---------+---------+----------------+-----------+------------+
+
+3. Update all prices with 2% of its original price. 
+
+mysql> update product set price=price+(price*2/100);
+
+mysql> select * from product;
++------+----------+-------+
+| pid  | pname    | price |
++------+----------+-------+
+| 2001 | pen      |    12 |
+| 2002 | pencil   |    17 |
+| 2003 | soap     |    71 |
+| 2004 | notebook |    61 |
+| 2005 | A4 sheet |    51 |
++------+----------+-------+
+
+4. Change the address, city, phone number of a particular customer. 
+
+mysql> update customer set address='qwer(h)tdy(po)',city='kannur',ph_no=9876543211 where name='Mini';
+
+mysql> select * from customer;
+
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | kochi     | 1234567866 |
+|   10002 | Remya   | aefd(h)cvm(po) | ekm       |       NULL |
+|   10003 | Mini    | qwer(h)tdy(po) | kannur    | 9876543211 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
++---------+---------+----------------+-----------+------------+
+
+5. Change the quantity of a purchased product of inv_id ‘101’
+
+mysql> update Invoice_item set quantity="1" where inv_id =101;
+
+mysql> select * from Invoice_item;
+
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|    101 | 2001 |        1 |
+|    101 | 2002 |        1 |
+|    102 | 2003 |        2 |
+|    103 | 2004 |        5 |
+|    104 | 2005 |        4 |
+|    105 | 2005 |        4 |
++--------+------+----------+
+
+c) DML - DELETE
+ 
+1. Delete the record of customer id ‘10001’. 
+
+mysql> delete from Invoice_item where inv_id= 101;
+mysql> delete from Invoice_master where inv_id= 101;
+mysql> delete from customer where cust_id= 10001;
+
+mysql> select * from customer;
+
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10002 | Remya   | aefd(h)cvm(po) | ekm       |       NULL |
+|   10003 | Mini    | qwer(h)tdy(po) | kannur    | 9876543211 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
++---------+---------+----------------+-----------+------------+
+
+2. Delete all purchase details of items its quantity less than 2. 
+
+mysql> delete from Invoice_item where quantity<2;
+
+mysql> select * from Invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|    103 | 2004 |        5 |
+|    104 | 2005 |        4 |
+|    105 | 2005 |        4 |
++--------+------+----------+
+
+3. Delete the purchase details of product ‘pen’ in the in_id ‘101’. 
+
+mysql> delete from Invoice_item where inv_id=101;
+
+mysql> select * from Invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|    103 | 2004 |        5 |
+|    104 | 2005 |        4 |
+|    105 | 2005 |        4 |
++--------+------+----------+
+
+mysql> delete from product where pid=2001;
+
+mysql> select * from product;
++------+----------+-------+
+| pid  | pname    | price |
++------+----------+-------+
+| 2002 | pencil   |    17 |
+| 2003 | soap     |    71 |
+| 2004 | notebook |    61 |
+| 2005 | A4 sheet |    51 |
++------+----------+-------+
+
+4. Delete details of customer who does not have phone number. 
+
+mysql> delete from Invoice_master where inv_id=102;
+mysql> delete from customer where ph_no is null;
+
+mysql> select * from customer;
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10003 | Mini    | qwer(h)tdy(po) | kannur    | 9876543211 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
++---------+---------+----------------+-----------+------------+
+
+5. Delete all records from STUDENT table. 
+
+mysql> delete from STUDENT;
+
+mysql> select * from STUDENT;
+Empty set (0.00 sec)
+
+6. Delete Invoice details of a particular customer. 
+
+mysql> delete from Invoice_item where inv_id=105;
+
+mysql> delete from Invoice_master where inv_id=105;
+
+mysql> select * from Invoice_master;
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|    103 |   10003 | 2021-06-19 |
+|    104 |   10004 | 2023-11-26 |
++--------+---------+------------+
+
+mysql> select * from Invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|    103 | 2004 |        5 |
+|    104 | 2005 |        4 |
++--------+------+----------+
+
+
