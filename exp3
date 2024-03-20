@@ -285,7 +285,7 @@ mysql> show grants for anu@'localhost';
 +-----------------------------------------------------------+
 
 
-
+//VERIFIED
 
 
 
