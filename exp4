@@ -1,0 +1,108 @@
+1.    List all customer details. 
+
+mysql> select * from customer;
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | kochi     | 1234567866 |
+|   10002 | Remya   | aefd(h)cvm(po) | ekm       |       NULL |
+|   10003 | Mini    | qwer(h)tdy(po) | kannur    | 9876543211 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
++---------+---------+----------------+-----------+------------+
+5 rows in set (0.00 sec)
+
+
+2.    List pname, price of all products. 
+
+mysql> select pname,price from product;
++----------+-------+
+| pname    | price |
++----------+-------+
+| pencil   |    17 |
+| soap     |    71 |
+| notebook |    61 |
+| A4 sheet |    51 |
++----------+-------+
+4 rows in set (0.03 sec)
+
+3.    List all invoice items, avoid duplicates. 
+
+mysql> select distinct pid from Invoice_item;
++------+
+| pid  |
++------+
+| 2001 |
+| 2002 |
+| 2003 |
+| 2004 |
+| 2005 |
++------+
+5 rows in set (0.00 sec)
+
+4.    List product price between 50rs and 150rs 
+
+mysql> select * from product where price between 50 and 150;
++------+----------+-------+
+| pid  | pname    | price |
++------+----------+-------+
+| 2003 | soap     |    71 |
+| 2004 | notebook |    61 |
+| 2005 | A4 sheet |    51 |
++------+----------+-------+
+3 rows in set (0.00 sec)
+
+
+5.    List the customer details who lives in ‘ekm’,’tvm’. 
+
+mysql> select * from customer where city='ekm' or 'tvm';
++---------+-------+----------------+------+-------+
+| cust_id | name  | address        | city | ph_no |
++---------+-------+----------------+------+-------+
+|   10002 | Remya | aefd(h)cvm(po) | ekm  |  NULL |
++---------+-------+----------------+------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
