@@ -1,0 +1,20 @@
+
+1.      Create a view for customers who have purchased products. 
+
+mysql> create view purchase as select name from customer where cust_id in(select cust_id from Invoice_master);
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> select * from purchase;
+
++---------+
+| name    |
++---------+
+| Athulya |
+| Remya   |
+| Mini    |
+| Bhavana |
+| Navya   |
++---------+
+5 rows in set (0.00 sec)
+
+
