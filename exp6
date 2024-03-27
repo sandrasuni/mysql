@@ -1,0 +1,109 @@
+1.6 
+OPTIMIZING DATABASE:  (GROUP BY, AGGREGATE FUNCTIONS)
+
+1.    List product name, price except soap on price order. 
+
+mysql> select * from product;
+
++------+----------+-------+
+| pid  | pname    | price |
++------+----------+-------+
+| 2001 | pen      |    12 |
+| 2002 | pencil   |    17 |
+| 2003 | soap     |    71 |
+| 2004 | notebook |    61 |
+| 2005 | A4 sheet |    51 |
++------+----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select pname,price from product where pname!="soap" order by price;
+
++----------+-------+
+| pname    | price |
++----------+-------+
+| pen      |    12 |
+| pencil   |    17 |
+| A4 sheet |    51 |
+| notebook |    61 |
++----------+-------+
+4 rows in set (0.00 sec)
+
+
+2.    Find minimum, maximum and average price of products.
+
+mysql> select * from product;
+
++------+----------+-------+
+| pid  | pname    | price |
++------+----------+-------+
+| 2001 | pen      |    12 |
+| 2002 | pencil   |    17 |
+| 2003 | soap     |    71 |
+| 2004 | notebook |    61 |
+| 2005 | A4 sheet |    51 |
++------+----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select min(price),max(price),avg(price) from product;
+
++------------+------------+------------+
+| min(price) | max(price) | avg(price) |
++------------+------------+------------+
+|         12 |         71 |    42.4000 |
++------------+------------+------------+
+1 row in set (0.03 sec)
+
+
+3.    Find number of customers in each city. 
+
+mysql> select * from customer;
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | kochi     | 1234567866 |
+|   10002 | Remya   | aefd(h)cvm(po) | ekm       |       NULL |
+|   10003 | Mini    | qwer(h)tdy(po) | kannur    | 9876543211 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
+|   10006 | Anu     | aaa(h)sss(po)  | ekm       | 2233445567 |
++---------+---------+----------------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select city,count(*) from customer group by city;
++-----------+----------+
+| city      | count(*) |
++-----------+----------+
+| kochi     |        1 |
+| ekm       |        2 |
+| kannur    |        1 |
+| Kozhikode |        1 |
+| klm       |        1 |
++-----------+----------+
+5 rows in set (0.00 sec)
+
+
+4.    Find number of customers in each city, only include city with more than 1 customers.
+
+mysql> select * from customer;
+
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | kochi     | 1234567866 |
+|   10002 | Remya   | aefd(h)cvm(po) | ekm       |       NULL |
+|   10003 | Mini    | qwer(h)tdy(po) | kannur    | 9876543211 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
+|   10006 | Anu     | aaa(h)sss(po)  | ekm       | 2233445567 |
++---------+---------+----------------+-----------+------------+
+6 rows in set (0.01 sec)
+
+mysql> select city,count(*) from customer group by city having count(city)>1;
+
++------+----------+
+| city | count(*) |
++------+----------+
+| ekm  |        2 |
++------+----------+
+1 row in set (0.00 sec)
+
