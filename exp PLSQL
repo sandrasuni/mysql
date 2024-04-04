@@ -1,0 +1,90 @@
+2.1 PL/SQL PROGRAMS- STORED PROCEDURES
+
+1.      Create a procedure to display all tables in the invoice database. 
+
+mysql> delimiter //
+mysql> create procedure t1() begin
+    -> select * from customer;
+    -> select * from product;
+    -> select * from Invoice_item;
+    -> select * from Invoice_master;
+    -> end //
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> call t1();
+    -> //
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | kochi     | 1234567866 |
+|   10002 | Remya   | aefd(h)cvm(po) | ekm       |       NULL |
+|   10003 | Mini    | qwer(h)tdy(po) | kannur    | 9876543211 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
+|   10006 | Anu     | aaa(h)sss(po)  | ekm       | 2233445567 |
++---------+---------+----------------+-----------+------------+
+6 rows in set (0.00 sec)
+
++------+----------+-------+
+| pid  | pname    | price |
++------+----------+-------+
+| 2001 | pen      |    12 |
+| 2002 | pencil   |    17 |
+| 2003 | soap     |    71 |
+| 2004 | notebook |    61 |
+| 2005 | A4 sheet |    51 |
++------+----------+-------+
+5 rows in set (0.00 sec)
+
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|    103 | 2004 |        5 |
+|    104 | 2005 |        4 |
+|    101 | 2001 |        1 |
+|    101 | 2002 |        2 |
+|    102 | 2003 |        2 |
+|    105 | 2005 |        4 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|    101 |   10001 | 2021-01-01 |
+|    102 |   10002 | 2022-02-10 |
+|    103 |   10003 | 2021-06-19 |
+|    104 |   10004 | 2023-11-26 |
+|    105 |   10005 | 2023-03-15 |
++--------+---------+------------+
+5 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+
+2.      Create a procedure to find sum of two numbers.
+
+mysql> delimiter //
+mysql> create procedure sum2(a int,b int) begin
+    -> declare x,y,z int;
+    -> set x=a;
+    -> set y=b;
+    -> set z=x+y;
+    -> select z as "sum";
+    -> end //
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> call sum2(5,2);
+    -> //
++------+
+| sum  |
++------+
+|    7 |
++------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+
