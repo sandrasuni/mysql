@@ -114,7 +114,7 @@ mysql> select * from customer inner join Invoice_master on customer.cust_id=Invo
 
 
 
-
+//VERIFIED
 
 
 
