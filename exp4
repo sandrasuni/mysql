@@ -63,7 +63,7 @@ mysql> select * from customer where city='ekm' or 'tvm';
 +---------+-------+----------------+------+-------+
 1 row in set, 1 warning (0.00 sec)
 
-
+//VERIFIED
 
 
 
