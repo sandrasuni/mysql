@@ -1,0 +1,85 @@
+2.2 PL/SQL PROGRAMS – FUNCTIONS
+
+1.       Create a function to calculate price_range(low, medium, high) of each product. If price<=5 indicate as low, upto 50 indicate as medium, and above as high.
+
+
+mysql> delimiter //
+mysql> create function priceind(price int) returns varchar(20)
+    -> deterministic
+    -> begin
+    -> declare price_ind varchar(20);
+    -> if price<=35 then set price_ind='LOW';
+    -> elseif(price>35 and price<=200) then set price_ind='MEDIUM';
+    -> elseif price>200 then set price_ind='HIGH';
+    -> end if;
+    -> return(price_ind);
+    -> end
+    -> //
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> select pid,pname,price,priceind(price) from product;
+    -> //
++------+----------+-------+-----------------+
+| pid  | pname    | price | priceind(price) |
++------+----------+-------+-----------------+
+| 2001 | pen      |    12 | LOW             |
+| 2002 | pencil   |    17 | LOW             |
+| 2003 | soap     |    71 | MEDIUM          |
+| 2004 | notebook |    61 | MEDIUM          |
+| 2005 | A4 sheet |    51 | MEDIUM          |
++------+----------+-------+-----------------+
+5 rows in set (0.03 sec)
+
+
+
+2.3  PL/SQL PROGRAMS – TRIGGERS
+
+1.      Create a trigger to handle updates to the customer table. 
+
+
+mysql> create temporary table cust select * from customer;
+    -> //
+Query OK, 6 rows affected (0.03 sec)
+
+mysql> select * from cust;
+    -> //
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | kochi     | 1234567866 |
+|   10002 | Remya   | aefd(h)cvm(po) | ekm       |       NULL |
+|   10003 | Mini    | qwer(h)tdy(po) | kannur    | 9876543211 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode | 7736545782 |
+|   10005 | Navya   | abc(h)bgm(po)  | klm       | 7036545732 |
+|   10006 | Anu     | aaa(h)sss(po)  | ekm       | 2233445567 |
++---------+---------+----------------+-----------+------------+
+6 rows in set (0.00 sec)
+
+
+mysql> truncate cust;
+    -> //
+Query OK, 0 rows affected (0.00 sec)
+
+
+mysql> create trigger cust_trig after update on customer for each row begin insert into cust set cust_id=new.cust_id, name=new.name,address=new.address,city=new.city,ph_no=new.ph_no; END//
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> update customer set city="Idukki" where cust_id=10001;
+    -> //
+Query OK, 1 row affected (0.08 sec)
+
+mysql> update customer set ph_no=98567347 where cust_id=10004;
+    -> //
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from cust;
+    -> //
++---------+---------+----------------+-----------+------------+
+| cust_id | name    | address        | city      | ph_no      |
++---------+---------+----------------+-----------+------------+
+|   10001 | Athulya | abcd(h)gcm(po) | Idukki    | 1234567866 |
+|   10004 | Bhavana | kkm(h)vgm(po)  | Kozhikode |   98567347 |
++---------+---------+----------------+-----------+------------+
+2 rows in set (0.00 sec)
+
+
